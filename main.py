@@ -2,8 +2,8 @@ Tutor_groups = ["7a","7b","7c","7d","7e","7f","8a","8b","8c","8d","8e","8f","9a"
 Check = []
 for count in range (30):
 
-    CanidateNames = []
-    CanidateList = []
+    CandidateNames = []
+    CandidateList = []
 
     TutorName =  str(input("Please enter a tutor group name: "))
     while (TutorName not in Tutor_groups) or (TutorName in Check):
@@ -17,15 +17,15 @@ for count in range (30):
     while (StudentNumber < 28) or (StudentNumber > 35):
         StudentNumber = int(input("Please enter the number of students between 28 and 35: "))
 
-    CanidateNumber = int(input("Please enter the number of canidates running for the election: "))
-    while (CanidateNumber > 4) or (CanidateNumber < 1):
-        CanidateNumber = int(input("Only a maximum of 4 canidates can run, please re-enter the number of running canidates: "))
+    CandidateNumber = int(input("Please enter the number of candidates running for the election: "))
+    while (CandidateNumber > 4) or (CandidateNumber < 1):
+        CandidateNumber = int(input("Only a maximum of 4 candidates can run, please re-enter the number of running candidates: "))
 
-    for count_2 in range (CanidateNumber):
-        CanidateNames.append (str(input("Please enter name of canidate: ")))
-        name = CanidateNames[count_2]
+    for count_2 in range (CandidateNumber):
+        CandidateNames.append (str(input("Please enter name of candidate: ")))
+        name = CandidateNames[count_2]
         name = str(count_2+1) + ". " + name
-        CanidateList.append (name)
+        CandidateList.append (name)
 
     print ("")
     counter = 0
@@ -47,13 +47,13 @@ for count in range (30):
                 print ("")      
                 voting_check = str(input("Are you voting? Type 'yes' if so, or 'no' to abstain: "))
                 if (voting_check == "yes") or (voting_check == "Yes"):
-                    for sub_count_3 in range (CanidateNumber):
-                        print (CanidateList[sub_count_3])  
-                    vote = str(input("Please enter the name of the canidate you would like to vote for from the list above: "))
-                    while vote not in CanidateNames:
-                        vote = str(input("Please enter the canidate name from the list above: "))
-                    for sub_count_3 in range (CanidateNumber):
-                        if vote == CanidateNames[sub_count_3]:
+                    for sub_count_3 in range (CandidateNumber):
+                        print (CandidateList[sub_count_3])  
+                    vote = str(input("Please enter the name of the candidate you would like to vote for from the list above: "))
+                    while vote not in CandidateNames:
+                        vote = str(input("Please enter the candidate name from the list above: "))
+                    for sub_count_3 in range (CandidateNumber):
+                        if vote == CandidateNames[sub_count_3]:
                             Number_of_votes[sub_count_3] = Number_of_votes[sub_count_3] + 1 
                 elif (voting_check == "no") or (voting_check == "No"):
                     Number_of_abstaining = Number_of_abstaining + 1 
@@ -64,15 +64,15 @@ for count in range (30):
 
         Highest = 0
         tie_list = []
-        for count_4 in range (CanidateNumber):
+        for count_4 in range (CandidateNumber):
             if Number_of_votes[count_4] > Highest:
                 tie_list = []
                 tie_list.append (count_4)
                 Highest = Number_of_votes[count_4]
-                Winners = CanidateNames[count_4]
+                Winners = CandidateNames[count_4]
                 number_of_ties = 1
             elif Number_of_votes[count_4] == Highest:
-                Winners = Winners + " and " + CanidateNames[count_4]
+                Winners = Winners + " and " + CandidateNames[count_4]
                 number_of_ties = number_of_ties + 1
                 tie_list.append (count_4)
                 counter = 1
@@ -80,11 +80,11 @@ for count in range (30):
         print ("Tutor Group Name:")
         print ("=================")
         print (TutorName)
-        print ("Number of votes for canidates:")
+        print ("Number of votes for candidates:")
         print ("==============================")
-        for count_5 in range (CanidateNumber):
+        for count_5 in range (CandidateNumber):
             percentage = (Number_of_votes[count_5]/(StudentNumber - Number_of_abstaining)) *100
-            print (CanidateList[count_5], "-", Number_of_votes[count_5], " - ", percentage, "%", " of students voted.")
+            print (CandidateList[count_5], "-", Number_of_votes[count_5], " - ", percentage, "%", " of students voted.")
         print ("")
         print ("Number of students who voted:")
         print ("=============================")
@@ -95,16 +95,16 @@ for count in range (30):
         print ("")
         if number_of_ties > 1:
             print("There has been a tie between %s. The election will be run again." %Winners)
-            name_writer = CanidateNames
-            CanidateNames = []
-            CanidateList = []
+            name_writer = CandidateNames
+            CandidateNames = []
+            CandidateList = []
             for count in range (number_of_ties):
-                CanidateNames.append (name_writer[tie_list[count]])
-                CanidateList.append (str(count+1) + ". " + CanidateNames[count])
-            CanidateNumber = number_of_ties
+                CandidateNames.append (name_writer[tie_list[count]])
+                CandidateList.append (str(count+1) + ". " + CandidateNames[count])
+            CandidateNumber = number_of_ties
             print ("")
             print ("====================================================")
-            print ("Re-election will now commence against tied canidates")
+            print ("Re-election will now commence against tied candidates")
             print ("====================================================")
         elif number_of_ties == 1:
             print ("Winner of election:")

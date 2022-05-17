@@ -79,15 +79,15 @@ int main() {
             scanf("%d", &student_no);
         }
 
-        printf("Please enter the number of canidates: ");
+        printf("Please enter the number of candidates: ");
         scanf("%d", &cand_no);
         while (cand_no < 1 || cand_no > 4) {
-            printf("Please enter the number of canidates: ");
+            printf("Please enter the number of candidates: ");
             scanf("%d", &cand_no);
         }
 
         for (int i = 0;  i < cand_no; i++) {
-            printf("Please enter canidate name: ");
+            printf("Please enter candidate name: ");
             char name[20];
             scanf("%s", &name);
             strcpy(cand_names[i], name);
@@ -119,10 +119,10 @@ int main() {
                             printf("%d. %s\n", i+1, cand_names[i]);
                         }
 
-                        printf("Please enter the index of the canidate you would like to vote for from the list above: ");
+                        printf("Please enter the index of the candidate you would like to vote for from the list above: ");
                         scanf("%d", &vote);
                         while (!((-1 < vote-1) && (vote-1 < cand_no))) {
-                            printf("Please enter the canidate index from the list above: ");
+                            printf("Please enter the candidate index from the list above: ");
                             scanf("%d", &vote);
                         }
                         no_votes[vote-1]++;
@@ -166,7 +166,7 @@ int main() {
             printf("\nTutor Group Name:\n");
             printf("=================\n");
             printf("%s\n", tutor_name);
-            printf("Number of votes for canidates:\n");
+            printf("Number of votes for candidates:\n");
             printf("==============================\n");
             for (int i = 0; i < cand_no; i++) {
                 percentage = ((double)no_votes[i]/(double)(student_no - no_abstaining)) *100;
@@ -190,7 +190,7 @@ int main() {
                 cand_no = tie_num;
                 memset(vote_IDs, '\0', sizeof(vote_IDs));
                 printf("\n====================================================\n");
-                printf("Re-election will now commence against tied canidates\n");
+                printf("Re-election will now commence against tied candidates\n");
                 printf("====================================================\n");
             } else {
                 printf("\nWinner of election:\n");

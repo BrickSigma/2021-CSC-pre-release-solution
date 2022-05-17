@@ -8,7 +8,7 @@
 #define MAX_CAND 4
 
 // A simple function to check if a string is in an array of strings
-int strinarr(char *arr, int width, int chr_size, char *str) {
+int str_in_arr(char *arr, int width, int chr_size, char *str) {
     int success = 0;
     for (int i = 0; i < width; i++) {
         if ((strcmp(arr+(i*chr_size), str)) == 0) {
@@ -60,11 +60,11 @@ int main() {
 
         printf("Please enter a tutor group name: ");
         scanf("%s", &tutor_name);
-        while (!(strinarr(&TUTOR_GROUPS[0][0], MAX_GROUPS, 4, tutor_name)) || (strinarr(&check[0][0], MAX_GROUPS, 4, tutor_name))) {
-            if (strinarr(&check[0][0], MAX_GROUPS, 4, tutor_name)) {
+        while (!(str_in_arr(&TUTOR_GROUPS[0][0], MAX_GROUPS, 4, tutor_name)) || (str_in_arr(&check[0][0], MAX_GROUPS, 4, tutor_name))) {
+            if (str_in_arr(&check[0][0], MAX_GROUPS, 4, tutor_name)) {
                 printf("This tutor group has already voted. Please enter a different tutor group: ");
                 scanf("%s", &tutor_name);
-            } else if (!(strinarr(&TUTOR_GROUPS[0][0], MAX_GROUPS, 4, tutor_name))) {
+            } else if (!(str_in_arr(&TUTOR_GROUPS[0][0], MAX_GROUPS, 4, tutor_name))) {
                 printf("Please enter a valid tutor group name: ");
                 scanf("%s", &tutor_name);
             }
@@ -107,7 +107,7 @@ int main() {
                 strcpy(voteID, tutor_name);
                 strcat(voteID, id);
 
-                if (!(strinarr(&vote_IDs[0][0], MAX_STUDENTS, 6, voteID))) {
+                if (!(str_in_arr(&vote_IDs[0][0], MAX_STUDENTS, 6, voteID))) {
                     printf("Your voting ID is %s\n", voteID);
                     strcpy(vote_IDs[student_counter], voteID);
 
